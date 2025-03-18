@@ -14,7 +14,7 @@
 ## Development Environment & Build
 - IDE: IntelliJ IDEA, Visual Studio Code (VSC)
 - Deployment: Docker
-- Backend: Java SpringBoot (JDK 23)
+- Backend: Java SpringBoot (Oracle OpenJDK 23.0.2)
 - Frontend: React.js
 - Database: PostgreSQL
 - Authentication: JSON Web Tokens (JWT)
