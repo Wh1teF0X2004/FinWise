@@ -14,7 +14,7 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    private String SECRET_KEY = "finance_secret_key";
+    private String SECRET_KEY = "RmluV2lzZS1GaW5hbmNlQXBwbGljYXRpb24tV2gxdGVGMFg="; // https://www.base64encode.org/ "FinWise-FinanceApplication-Wh1teF0X";
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
