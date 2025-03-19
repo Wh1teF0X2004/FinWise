@@ -1,4 +1,9 @@
 package com.finance.FinWise.repository;
 
-public class UserRepository {
+import com.finance.FinWise.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByUserEmail(String email);
 }

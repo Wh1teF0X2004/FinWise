@@ -1,4 +1,9 @@
 package com.finance.FinWise.repository;
 
-public class TransactionRepository {
+import com.finance.FinWise.model.Transaction;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface TransactionRepository extends JpaRepository<Transaction, Long> {
+    List<Transaction> findByUserUserId(Long userId);
 }
