@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/login', { userEmail: email, userPassword: password });
+            const response = await api.post('/auth/login', { userEmail: email, userPassword: password });
             localStorage.setItem('token', response.data); // Save JWT token
             navigate('/dashboard'); // Redirect to dashboard
         } catch (error) {
@@ -19,15 +19,14 @@ const Login = () => {
     };
 
     return (
-        <div style={styles.container}>
+        <div>
             <h1>Login</h1>
-            <form onSubmit={handleLogin} style={styles.form}>
+            <form onSubmit={handleLogin}>
                 <input
                     type="email"
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    style={styles.input}
                     required
                 />
                 <input
@@ -35,10 +34,9 @@ const Login = () => {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    style={styles.input}
                     required
                 />
-                <button type="submit" style={styles.button}>Login</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     );

@@ -7,7 +7,7 @@ const Transactions = () => {
     useEffect(() => {
         const fetchTransactions = async () => {
             try {
-                const response = await api.get('/transactions/user/1');
+                const response = await api.get('/transactions/user/1'); // Replace '1' with dynamic user ID
                 setTransactions(response.data);
             } catch (error) {
                 console.error('Failed to fetch transactions', error);
@@ -17,11 +17,11 @@ const Transactions = () => {
     }, []);
 
     return (
-        <div style={styles.container}>
+        <div>
             <h1>Transactions</h1>
-            <ul style={styles.list}>
+            <ul>
                 {transactions.map(transaction => (
-                    <li key={transaction.transId} style={styles.listItem}>
+                    <li key={transaction.transId}>
                         {transaction.transAmount} - {transaction.transType}
                     </li>
                 ))}

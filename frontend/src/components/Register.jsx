@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
@@ -12,7 +12,7 @@ const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8080/api/auth/register', {
+            await api.post('/auth/register', {
                 userName: name,
                 userEmail: email,
                 userPassword: password,
@@ -25,15 +25,14 @@ const Register = () => {
     };
 
     return (
-        <div style={styles.container}>
+        <div>
             <h1>Register</h1>
-            <form onSubmit={handleRegister} style={styles.form}>
+            <form onSubmit={handleRegister}>
                 <input
                     type="text"
                     placeholder="Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    style={styles.input}
                     required
                 />
                 <input
@@ -41,7 +40,6 @@ const Register = () => {
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    style={styles.input}
                     required
                 />
                 <input
@@ -49,7 +47,6 @@ const Register = () => {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    style={styles.input}
                     required
                 />
                 <input
@@ -57,10 +54,9 @@ const Register = () => {
                     placeholder="Birthdate"
                     value={birthdate}
                     onChange={(e) => setBirthdate(e.target.value)}
-                    style={styles.input}
                     required
                 />
-                <button type="submit" style={styles.button}>Register</button>
+                <button type="submit">Register</button>
             </form>
         </div>
     );
